@@ -2,41 +2,13 @@ import fetch from "cross-fetch";
 
 import ApiEnum from "./ApiEnum";
 
-export type BiblesParams = {
-  language?: string;
-  abbreviation?: string;
-  name?: string;
-  ids?: string;
-};
-
-export type BibleBooksParams = {
-  includeChapters: boolean;
-  includeChaptersAndSection: boolean;
-};
-
-export type BibleBookParams = {
-  includeChapters: boolean;
-};
-
-// Chapters and others?
-export type CommonFetchParams = {
-  contentType?: string;
-  includeNotes?: boolean;
-  includeTitles?: boolean;
-  includeChapterNumbers?: boolean;
-  includeVerseNumbers?: boolean;
-  includeVerseSpans?: boolean;
-  parallels?: string;
-};
-
-export type SearchParams = {
-  query?: string;
-  limit?: number;
-  offset?: number;
-  sort?: "relevance" | "canonical" | "reverse-canonical";
-  range?: string;
-  fuzziness?: "AUTO" | 0 | 1 | 2;
-};
+import {
+  BibleBookParams,
+  BibleBooksParams,
+  BiblesParams,
+  CommonFetchParams,
+  SearchParams,
+} from "./types";
 
 const getFetchOptions = (apiKey: string) => {
   const headers = new Headers();
@@ -87,7 +59,6 @@ class Fetch {
 
   /**
    * Fetch all books from the bible
-   * @param {object} params
    */
   static bibleBooks(apiKey: string, bibleId: string, params: BibleBooksParams) {
     let url = `${ApiEnum.baseUrl}${ApiEnum.bibles}/${bibleId}/books?`;
@@ -148,10 +119,6 @@ class Fetch {
 
   /**
    * Get a passage from the bible
-   * @param {object} params
-   * @param {function name(error, res, body) {
-
-   }} callback
    */
   static biblePassage(
     apiKey: string,
@@ -169,7 +136,6 @@ class Fetch {
 
   /**
    * Search the bible
-   * @param {object} params
    */
   static search(apiKey: string, bibleId: string, params: SearchParams = {}) {
     let url = `${ApiEnum.baseUrl}${ApiEnum.bibles}/${bibleId}/search?`;
@@ -221,18 +187,11 @@ class Fetch {
 
   /**
    * Fetch all sections in a chapter of the bible
-   * @param {string} apiKey
-   * @param {string} bibleId
-   * @param {string} chapterId
-   * @param {function name(error, res, body) {
-
-   }} callback
    */
   static bibleChapterSections(
     apiKey: string,
     bibleId: string,
-    chapterId: string,
-    callback: (error: string, _res: any, body: string) => void
+    chapterId: string
   ) {
     const url = this._getLongUrl(
       `${ApiEnum.baseUrl}/bibles/${bibleId}/chapters/${chapterId}/sections`
@@ -331,12 +290,13 @@ class Fetch {
     }
     if (
       contentType &&
-      ["json, htnl, text"].includes(contentType.toLowerCase())
+      ["json", "html", "text"].includes(contentType.toLowerCase())
     ) {
       url = `${url}content-type=${contentType.toLowerCase()}`;
     } else {
       url = `${url}content-type=json`;
     }
+
     return url;
   }
 
