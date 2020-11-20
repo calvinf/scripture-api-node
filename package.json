@@ -1,54 +1,65 @@
 {
-  "name": "scripture-api",
-  "version": "1.0.2",
-  "description": "A node interface for https://scripture.api.bible",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "lib/*.js",
-    "lib/**/*.d.ts",
-    "lib/**/*.map"
-  ],
-  "scripts": {
-    "build": "rollup -c rollup.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "bible",
-    "scripture",
-    "api",
-    "verses",
-    "kjv",
-    "chapters",
-    "book",
-    "holy"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/olawalejarvis/scripture-api-node"
-  },
-  "bugs": {
-    "url": "https://github.com/olawalejarvis/scripture-api-node/issues"
-  },
-  "homepage": "https://github.com/olawalejarvis/scripture-api-node",
-  "author": "Olawale Aladeusi(olawalejarvis@gmail.com)",
-  "license": "ISC",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "@rollup/plugin-node-resolve": "^10.0.0",
-    "@tsconfig/node12": "^1.0.7",
-    "rollup": "^2.33.1",
-    "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-typescript2": "^0.29.0",
-    "ttypescript": "^1.5.12",
-    "typescript": "^4.0.5"
-  },
-  "dependencies": {
-    "cross-fetch": "^3.0.6"
-  }
+    "name": "scripture-api",
+    "version": "1.0.2",
+    "description": "A node interface for https://scripture.api.bible",
+    "main": "lib/index.js",
+    "module": "lib/index.esm.js",
+    "types": "lib/index.d.ts",
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib/*.js",
+        "lib/**/*.d.ts",
+        "lib/**/*.map"
+    ],
+    "scripts": {
+        "build": "rollup -c rollup.config.js",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "bible",
+        "scripture",
+        "api",
+        "verses",
+        "kjv",
+        "chapters",
+        "book",
+        "holy"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/olawalejarvis/scripture-api-node"
+    },
+    "bugs": {
+        "url": "https://github.com/olawalejarvis/scripture-api-node/issues"
+    },
+    "homepage": "https://github.com/olawalejarvis/scripture-api-node",
+    "author": "Olawale Aladeusi(olawalejarvis@gmail.com)",
+    "license": "ISC",
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^16.0.0",
+        "@rollup/plugin-node-resolve": "^10.0.0",
+        "@tsconfig/node12": "^1.0.7",
+        "eslint": "^7.13.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.5.1",
+        "prettier": "^2.1.2",
+        "rollup": "^2.33.1",
+        "rollup-plugin-cleaner": "^1.0.0",
+        "rollup-plugin-copy": "^3.3.0",
+        "rollup-plugin-typescript2": "^0.29.0",
+        "ttypescript": "^1.5.12",
+        "typescript": "^4.0.5"
+    },
+    "dependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.8.1",
+        "@typescript-eslint/parser": "^4.8.1",
+        "cross-fetch": "^3.0.6"
+    }
 }
